@@ -1,0 +1,96 @@
+<section data-controller="Mapsv.CreatorCntrl" class="creator">
+  <h1>Craft BMAP Tx</h1>
+
+  <p>The transaction creator is a simple utility that lets you generate BMAP style transactions for testing purposes.</p>
+  
+  <p>Create some B content, assign MAP attributes below to generate a transaction for your app.</p>
+
+  <h4>B Content</h4>
+  <div>
+    <ul>
+      <li class="badge badge-pill badge-light">Text/Markdown</li>
+    </ul>
+
+    <textarea class="form-control">```
+YOUR MARKDOWN GOES HERE
+```</textarea>
+
+  <br />
+  </div>
+
+  <h4>MAP Attributes</h4>
+
+  <p>The "app" and "type" keys are required. Set the "app" key to a unique namespace for your application, and set "type" to differentiate between different actions within your app, such as "comment" or  "vote".</p>
+
+  <div class="form-group">
+  
+    <div class="row">
+      <div class="col">
+        <b>Key Name</b>
+      </div>
+      <div class="col">
+        <b>Value</b>
+      </div>
+    </div>
+
+  </div>
+  <div class="form-group">
+
+    <div class="row">
+      <div class="col">
+        <input disabled type="text" class="form-control" placeholder="key" value="app">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="MyAppName">
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+
+    <div class="row">
+      <div class="col">
+        <input disabled type="text" class="form-control" placeholder="key" value="type">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="action type">
+      </div>
+    </div>
+
+  </div>
+
+  <div data-repeat="key in keys">
+    <div class="row form-group">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="key" data-model="key.key">
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="value" data-model="key.value">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group text-align-right">
+    <button class="btn btn-primary" data-on-click="addKey">Add Another Key</button>
+  </div>
+
+  <!-- This line should go where you want to put your button -->
+  <div class="money-button"
+    data-to="1372"
+    data-amount=".001"
+    data-currency="USD"
+    data-label="Generate Tx"
+    data-client-identifier="f26be4b0e7ac096caa1358903bafee26"
+    data-button-id="1560109201287"
+    data-button-data="{}"
+    data-type="buy"
+    ></div>
+  <!-- This line can go anywhere -->
+  <script src="https://www.moneybutton.com/moneybutton.js"></script>
+
+
+  <div class="form-group">
+
+  </div>  
+
+  
+</section>

@@ -1,0 +1,64 @@
+global-reset()
+
+@font-face
+  font-family: 'national_parkheavy'
+  src: url('fonts/nationalpark-heavy-webfont.woff2') format('woff2'), url('fonts/nationalpark-heavy-webfont.woff') format('woff')
+  font-weight: normal
+  font-style: normal
+
+
+@font-face
+  font-family: 'national_park'
+  src: url('fonts/nationalpark-regular-webfont.woff2') format('woff2'), url('fonts/nationalpark-regular-webfont.woff') format('woff')
+  font-weight: normal
+  font-style: normal
+
+@font-face
+  font-family: 'national_parkthin'
+  src: url('fonts/nationalpark-thin-webfont.woff2') format('woff2'), url('fonts/nationalpark-thin-webfont.woff') format('woff')
+  font-weight: normal
+  font-style: normal
+
+body
+  color: #293241
+
+*
+  font-family: 'national_park', sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+section 
+  padding: 1rem
+
+a 
+  color: #EE6C4D
+
+h1, h2, h3, h4, h5, h6
+  color: #EE6C4D
+  font-family: 'national_park', sans-serif
+  font-weight: bold
+  text-transform: uppercase
+  letter-spacing: .15rem
+
+#container
+  position: relative
+
+section
+  padding: 2rem
+
+.docs
+  background-color: #fdf5e6
+  position: absolute
+  width: 50%
+  left: 0
+
+.creator
+  position: fixed
+  right: 0
+  width: 50%
+  background-color: #293241
+  color: #E0FBFC
+  height: 100vh
+
+  textarea
+    width: 100%

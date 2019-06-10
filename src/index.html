@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html data-controller="Mapsv.AppCntrl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Magic Attribute Protocol</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css" type="text/css" media="all">
+  </head>
+  <body class="mapsv">
+    <div id="container">
+      <div class="docs">
+        <section>
+            <h1>Magic Attribute Protocol</h1>
+        
+            <p>MAP is a Bitcoin OP_RETURN protocol for associating `key -> value` pairs. One analogy is, keys are like database field names, and values are the records themselves.</p>
+        
+            <pre class="well well-sm">
+OP_RETURN | input
+MAP
+SET | DELETE
+key
+value
+            </pre>
+            <a href="https://github.com/rohenaz/map" alt="Magic Attribute Protocol">Documentation</a>
+          </section>
+          
+          <section>
+            <h2>BMAP - Bitcoin App Strategy</h2>
+    
+            <p>BMAP is the general term for a strategy for working with OP_RETURN data in Bitcoin. 
+              The goal is to make Bitcoin app development much easier. Instead of creating a new protocol for every application, you can choose to adopt the BMAP strategy instead. In some cases it may even make sense to do both.</p>
+    
+            <p>The name comes from combining B protocol with MAP using OP_RETURN protocol pipelining:</p>
+    
+            <p>OP_RETURN | B | MAP</p>
+    
+            <ul>
+              <li>Works well with other protocols</li>
+              <li>Very Flexible</li>
+              <li>Easy to Understand and Use</li>
+            </ul>
+    
+            <p>BMAP as a strategy encompasses more than just these two protocols, but BCDMAPAIP... etc is not a very good name.</p>
+          </section>
+          <section>
+            <h2>"BMAP" - A TXO Parser</h2>
+        
+            <p>Because MAP is a variable width protocol, and is designed to be used with other protocols within the same tx, 
+              transactions often have more pushdatas than many simple Bitcom protocols.
+              With the bmap TXO parser, TXO formatted transaction data can be transformed into an easy to work with, human readable version.</p>
+        
+            <p>npm install bmapjs</p>
+        
+            <p>require('bmapjs')</p>
+    
+            <p><b>Supports</b></p>
+            <ul>
+              <li>B://</li>
+              <li>MAP</li>
+              <li>AIP</li>
+            </ul>
+        
+            Github <a href="https://github.com/rohenaz/bmap">bmapjs</a>
+          </section>
+        
+          <section>
+            <h2>BMAP Planaria</h2>
+        
+            
+        
+            <p>
+              Address: <a href="https://b.map.sv" alt="BMAP Planaria">1BM66TebgfZLfixCKdtn8yAcgwmTRRtLfk</a>
+            </p>
+        
+            <p> It's easy to get started building BMAP applications. You can use our public planaria as a backend for your app and be up and running in just minutes.</p>
+
+            <p>To get started, use the transaction creator to put your app's first transaction on-chain.</p>
+
+            <p>Then, we can generate some code to kickstart your app development.</p>
+        
+            <h4>Example Query</h4>
+
+            <pre class="well well-sm">
+              <code>
+              {
+                "v": 3,
+                "q": {
+                  "find": {
+                    "MAP.app": "tonicpow"
+                  },
+                  "limit": 10
+                }
+              }
+              </code>
+            </pre>
+        
+            <img src="https://i.boring.host/18ADgHjz.png" style="width: 100%" />
+          </section>
+      </div>
+      <div class="creator" data-include="'/views/creator.html'">
+        
+      </div>
+    </div>
+    <script src="node_modules/silica/dist/silica.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>

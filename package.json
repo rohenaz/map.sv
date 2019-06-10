@@ -1,0 +1,11 @@
+{
+  "name": "mapsv",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Satchmo",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "silica": "latest@next"
+  }
+}
