@@ -6,7 +6,9 @@ MAP.sv is a website for high level info on MAP protocol, the `bmapjs` library, a
 $ npm install -g silica
 ```
 
-## Watch (Build + Run + Watch for changes)
+## Usage
+The watch commane will build, run, and watch for changes to the filesystem.
+
 ```bash
 $ silica watch
 ```
