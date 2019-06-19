@@ -188,7 +188,7 @@ socket.onmessage = function(e) {
   }
 
   generateHtml () {
-    return '<i class="fa fa-certificate"></i>&nbsp;&nbsp;' + (Current.walletInitialized ? this.pendingTx ? 'Broadcast Tx' : 'Generate Tx' : 'Import WIF')
+    return '<i class="fa fa-certificate"></i>&nbsp;&nbsp;' + (this.pendingTx ? 'Broadcast Tx' : 'Generate Tx')
   }
 
   goToStep (el, param) {

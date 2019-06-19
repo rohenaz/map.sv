@@ -14,12 +14,17 @@ button
     background-color: unset !important
     border-color: unset !important
     box-shadow: none
-  &.primary
+  &:disabled
+    background-color: #666
+    color: #333
+    i
+      color: #333
+  &.primary:not(:disabled)
     background-color: #111
     color: #ccc
     i
       color: #00fbff
-    &:hover
+    &:hover:not(:disabled)
       background-color: #000
       color: #00fbff
       i
