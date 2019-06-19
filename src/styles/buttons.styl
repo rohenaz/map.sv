@@ -1,10 +1,14 @@
+@require('base')
+
 button     
   border: 0
+  border-radius: "calc(%s / 2)" % $radius
   outline: 0
-  padding: 1rem
+  padding: .75rem
   cursor: pointer
-  font-size: 1rem
+  font-size: .9rem
   text-transform: uppercase
+  transition: all .25s
   &:focus
     box-shadow: none
   &:active
@@ -14,8 +18,10 @@ button
   &.primary
     background-color: #111
     color: #ccc
+    i
+      color: #00fbff
     &:hover
       background-color: #000
-      color: #E0FBFC
+      color: #00fbff
       i
         color: #f573e9
