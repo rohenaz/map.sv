@@ -1,14 +1,20 @@
 
-goog.module("mapsv");
+goog.module("mapsv")
 
 const AppCntrl = goog.require("controllers.app")
 const CreatorCntrl = goog.require("controllers.creator")
+const WalletCntrl = goog.require("controllers.wallet")
 
-window["Mapsv"] = {
+window['Mapsv'] = {
   AppCntrl: AppCntrl,
-  CreatorCntrl: CreatorCntrl
+  CreatorCntrl: CreatorCntrl,
+  WalletCntrl: WalletCntrl
 }
 
-Silica.setContext("Mapsv");
-Silica.compile(document);
-Silica.apply(() => {});
+Silica.setContext('Mapsv')
+Silica.compile(document)
+Silica.apply(() => {
+  document.addEventListener('DOMContentLoaded', () => {
+    Prism.highlightAll(false)
+  })
+})

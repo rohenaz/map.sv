@@ -6,6 +6,13 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "bsv-satchel": "^0.1.4",
+    "bulma": "^0.7.5",
+    "prismjs": "^1.16.0",
     "silica": "latest@next"
+  },
+  "scripts": {
+    "deploy": "silica build -d ./post_build.sh && firebase deploy",
+    "watch": "silica watch -d ./post_build.sh"
   }
 }

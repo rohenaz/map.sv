@@ -2,3 +2,7 @@
 node_modules
 build
 build_cache
+.firebaserc
+.firebase
+firebase-debug.log
+firebase.json

@@ -5,56 +5,62 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Magic Attribute Protocol</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/css/bulma.min.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/css/styles.css" type="text/css" media="all">
+    <link rel="stylesheet" href="/css/prism.css" type="text/css" media="all">
+    <script src="/node_modules/bsv-satchel/dist/satchel.min.js" type="application/javascript"></script>
+    <script src="/js/prism.js" type="application/javascript"></script>
+
   </head>
   <body class="mapsv">
     <div id="container">
       <div class="docs">
         <section>
-            <h1>Magic Attribute Protocol</h1>
+            <h2 class="is-size-2">Magic Attribute Protocol</h2>
         
-            <p>MAP is a Bitcoin OP_RETURN protocol for associating `key -> value` pairs. One analogy is, keys are like database field names, and values are the records themselves.</p>
+            <p>MAP is a Bitcoin OP_RETURN protocol for associating `key -> value` pairs. Keys are like field names in a database, and the "value" is the data being inserted / deleted / updated.</p>
         
-            <pre class="well well-sm">
-OP_RETURN | input
+            <pre><code class="language-markup">OP_RETURN | input
 MAP
 SET | DELETE
 key
-value
-            </pre>
+value</code></pre>
             <a href="https://github.com/rohenaz/map" alt="Magic Attribute Protocol">Documentation</a>
           </section>
           
           <section>
-            <h2>BMAP - Bitcoin App Strategy</h2>
+            <h3 class="is-size-3">BMAP - Bitcoin App Strategy</h3>
     
-            <p>BMAP is the general term for a strategy for working with OP_RETURN data in Bitcoin. 
-              The goal is to make Bitcoin app development much easier. Instead of creating a new protocol for every application, you can choose to adopt the BMAP strategy instead. In some cases it may even make sense to do both.</p>
+            <p>BMAP is the general term for a technique for working with OP_RETURN data within Bitcoin transactions. 
+              The goal is to make Bitcoin app development fast, easy, and interconnected.</p>
+              
+            <p>This is an alternative approach to registering a new Bitcom protocol prefix and reinventing the wheel. There are several existing protocols that can be combined to create almost anything. In most cases a new protocol is not needed, and makes standardization more difficult.</p>
     
             <p>The name comes from combining B protocol with MAP using OP_RETURN protocol pipelining:</p>
     
-            <p>OP_RETURN | B | MAP</p>
+            <pre><code class="language-markup">OP_RETURN | B | MAP</code></pre>
     
+            <h5 class="is-size-5">Advantages</h5>
+
             <ul>
               <li>Works well with other protocols</li>
-              <li>Very Flexible</li>
+              <li>Extremely Flexible</li>
               <li>Easy to Understand and Use</li>
+              <li>Integrates with other Bitcoin apps</li>
+              <li>Specialized BMAP Planaria as a backend</li>
             </ul>
     
             <p>BMAP as a strategy encompasses more than just these two protocols, but BCDMAPAIP... etc is not a very good name.</p>
           </section>
           <section>
-            <h2>"BMAP" - A TXO Parser</h2>
+            <h3 class="is-size-3">"BMAP" - A TXO Parser</h3>
         
             <p>Because MAP is a variable width protocol, and is designed to be used with other protocols within the same tx, 
-              transactions often have more pushdatas than many simple Bitcom protocols.
-              With the bmap TXO parser, TXO formatted transaction data can be transformed into an easy to work with, human readable version.</p>
+              transactions often have more pushdatas than many Bitcom protocols.
+              With this <a href="https://github.com/interplanaria/txo" target="_blank">TXO</a> parser, TXO formatted transaction data can be transformed into an easy to work with, human readable version.</p>
         
-            <p>npm install bmapjs</p>
-        
-            <p>require('bmapjs')</p>
-    
+              <pre><code class="language-markup">npm install bmapjs
+require('bmapjs')</code></pre>
             <p><b>Supports</b></p>
             <ul>
               <li>B://</li>
@@ -66,9 +72,7 @@ value
           </section>
         
           <section>
-            <h2>BMAP Planaria</h2>
-        
-            
+            <h3 class="is-size-3">BMAP Planaria</h3>
         
             <p>
               Address: <a href="https://b.map.sv" alt="BMAP Planaria">1BM66TebgfZLfixCKdtn8yAcgwmTRRtLfk</a>
@@ -79,22 +83,25 @@ value
             <p>To get started, use the transaction creator to put your app's first transaction on-chain.</p>
 
             <p>Then, we can generate some code to kickstart your app development.</p>
-        
-            <h4>Example Query</h4>
 
-            <pre class="well well-sm">
-              <code>
-              {
-                "v": 3,
-                "q": {
-                  "find": {
-                    "MAP.app": "tonicpow"
-                  },
-                  "limit": 10
-                }
-              }
-              </code>
-            </pre>
+            <h5 class="is-size-5"></h5>
+            <ul>
+              <li>Auto transforms TXO records to BMAP objects</li>
+              <li>Pushdata index is no longer important</li>
+              <li>Built in Author Identity verification</li>
+            </ul>
+
+            <h5 class="is-size-5">Example Query</h5>
+
+            <pre class="language-json"><code>{
+  "v": 3,
+  "q": {
+    "find": {
+      "MAP.app": "tonicpow"
+    },
+    "limit": 10
+  }
+}</code></pre>
         
             <img src="https://i.boring.host/18ADgHjz.png" style="width: 100%" />
           </section>
@@ -103,7 +110,7 @@ value
         
       </div>
     </div>
-    <script src="node_modules/silica/dist/silica.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/node_modules/silica/dist/silica.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/js/app.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>

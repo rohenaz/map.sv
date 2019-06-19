@@ -1,96 +1,184 @@
 <section data-controller="Mapsv.CreatorCntrl" class="creator">
-  <h1>Craft BMAP Tx</h1>
 
-  <p>The transaction creator is a simple utility that lets you generate BMAP style transactions for testing purposes.</p>
+  <div class="subsection" data-show="step1">
+    <h2 class="is-size-2">Craft BMAP Biolerplate</h2>
+
+    <p>This generator lets you create all the code and documentation you need to build a Bitcoin app.</p>
   
-  <p>Create some B content, assign MAP attributes below to generate a transaction for your app.</p>
-
-  <h4>B Content</h4>
-  <div>
-    <ul>
-      <li class="badge badge-pill badge-light">Text/Markdown</li>
-    </ul>
-
-    <textarea class="form-control">```
-YOUR MARKDOWN GOES HERE
-```</textarea>
-
-  <br />
+    <p>Start by creating some B content, then assign some MAP attributes. That's all you need to generate the code!
+      <br />
+      You can also make a demo tx with your data right from this tool as well.</p>
+      <br />
+    <p class="control">
+      <button class="button" data-on-click="goToStep" data-parameter="2">Generate Tx & Code</button>
+    </p>
   </div>
 
-  <h4>MAP Attributes</h4>
+  <div class="subsection" data-show="step2">
+    <h2 class="is-size-2">Step 1</h2>
+    <h5 class="is-size-5">B Content</h5>
+    <p>Add some markdown here. Here's a <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">cheatsheet</a> for reference.<br />
+      We will add other content types here but for now, just markdown.</p>
+    <div>
 
-  <p>The "app" and "type" keys are required. Set the "app" key to a unique namespace for your application, and set "type" to differentiate between different actions within your app, such as "comment" or  "vote".</p>
+      <div class="field is-grouped is-grouped-multiline">
+        <div class="control">
+          <div class="tags has-addons">
+            <span class="tag is-dark">text</span>
+            <span class="tag is-info">markdown</span>
+          </div>
+        </div>
+      </div>
+      <label class="checkbox">
+        <input type="checkbox" checked data-model="enableB">
+        Enable B Content
+      </label>
+      <textarea data-disabled="disableB" class="textarea" data-model="bcontent"></textarea>
 
-  <div class="form-group">
+  <br />
+
+  <button class="button" data-on-click="goToStep" data-parameter="3">Next Step - MAP Attributes</button>
+    <br />
+    </div>
+  </div>
   
-    <div class="row">
-      <div class="col">
+  <div class="subsection" data-show="step3">
+    <h2 class="is-size-2">Step 2</h2>
+    <h5 class="is-size-5">MAP Attributes</h5>
+
+    <p>The "app" and "type" keys are required. Set the "app" key to a unique namespace for your application, and set "type" to differentiate between different actions within your app, such as "comment" or  "vote".</p>
+    <br />
+  
+    <div class="columns">
+      <div class="column">
         <b>Key Name</b>
       </div>
-      <div class="col">
+      <div class="column">
         <b>Value</b>
       </div>
     </div>
 
-  </div>
-  <div class="form-group">
-
-    <div class="row">
-      <div class="col">
-        <input disabled type="text" class="form-control" placeholder="key" value="app">
+    <div class="columns">
+      <div class="column">
+        <p class="control">app</p>
       </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="MyAppName">
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-
-    <div class="row">
-      <div class="col">
-        <input disabled type="text" class="form-control" placeholder="key" value="type">
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="action type">
+      <div class="column">
+        <input type="text" class="input" placeholder="MyAppName" data-model="appField" data-on-blur="updatePreview">
       </div>
     </div>
 
-  </div>
-
-  <div data-repeat="key in keys">
-    <div class="row form-group">
-      <div class="col">
-        <input type="text" class="form-control" placeholder="key" data-model="key.key">
+    <div class="columns">
+      <div class="column">
+        <p class="control">type</p>
       </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="value" data-model="key.value">
+      <div class="column">
+        <input type="text" class="input" placeholder="action_type" data-model="typeField" data-on-blur="updatePreview">
       </div>
-    </div>
-  </div>
-
-  <div class="form-group text-align-right">
-    <button class="btn btn-primary" data-on-click="addKey">Add Another Key</button>
-  </div>
-
-  <!-- This line should go where you want to put your button -->
-  <div class="money-button"
-    data-to="1372"
-    data-amount=".001"
-    data-currency="USD"
-    data-label="Generate Tx"
-    data-client-identifier="f26be4b0e7ac096caa1358903bafee26"
-    data-button-id="1560109201287"
-    data-button-data="{}"
-    data-type="buy"
-    ></div>
-  <!-- This line can go anywhere -->
-  <script src="https://www.moneybutton.com/moneybutton.js"></script>
-
-
-  <div class="form-group">
-
-  </div>  
-
+    </div>  
   
+    <div data-repeat="key in keys">
+      <div class="columns field">
+        <div class="column control">
+          <input type="text" class="input" placeholder="key" data-model="key.name" data-on-blur="updatePreview">
+        </div>
+        <div class="column control">
+          <input type="text" class="input" placeholder="value" data-model="key.value" data-on-blur="updatePreview">
+        </div>
+        <br />
+      </div>
+    </div>
+  
+    <div class="field">
+      <p class="control has-text-right">
+        <button class="button is-light is-small" data-on-click="addKey">Add Another Key</button>
+      </p>
+    </div>
+  
+    <br />
+
+    <h5 class="is-size-5">OP RETURN PREVIEW</h5>
+    <pre><code class="language-markup" data-model="opReturnPreview"></code></pre>
+
+    <br />
+
+    <div class="wallet" data-controller="Mapsv.WalletCntrl" data-include="'views/wallet.html'"></div>
+    <br />
+    <div class="field columns">
+      <p data-show="!Current.walletInitialized">To generate a real transaction with this data, sign in with a wif. If you skip this step, the demo app will just be an empty page if no txs exists on the chain with these MAP keys.</p>
+
+      <p data-show="fatURI">
+        <a data-href="fatURI">Fat URI</a>
+      </p>
+
+      <p class="control column">
+        <button class="button" data-on-click="makeBmapTx" data-model="generateText"></button>
+      </p>
+      <p class="control column">
+        <button class="button" data-on-click="goToStep" data-parameter="4">Skip (Code Only)</button>
+      </p>
+    </div>
+
+<!--     
+    <div class="money-button"
+      data-to="1372"
+      data-amount=".001"
+      data-currency="USD"
+      data-label="Generate Tx"
+      data-client-identifier="f26be4b0e7ac096caa1358903bafee26"
+      data-button-id="1560109201287"
+      data-button-data="{}"
+      data-type="buy"
+      ></div>
+    
+    <script src="https://www.moneybutton.com/moneybutton.js"></script> -->
+  </div>
+
+  <div class="subsectoin" data-show="step4">
+
+    <h2 class="is-size-2">Example Code</h2>
+
+    <div data-show="responseTx">
+      <b>Successfully Generated Transaction</b>
+      <p data-model="responseTx"></p>
+    </div>
+
+    <h3 class="is-size-4">BitQuery</h3>
+    Query matching your records. <a href="https://docs.planaria.network/#/query" target="_blank">More info</a>
+
+    <pre><code class="language-json" data-model="dynamicBitquery"></code></pre>
+    
+    <br />
+
+    <h3 class="is-size-4">Planarium Query</h3>
+    <p>Query the BMAP Planarium (API) for records of this type. <a href="https://docs.planaria.network/#/socket">More info</a></p>
+    <pre><code class="language-javascript" data-model="bitqueryFetch"></code></pre>
+  
+    <br />
+
+    <h3 class="is-size-4">Planarium Socket Connection</h3>
+    Listen for new transactions of this type. (Neon Planaria does not yet support a standard socket connection.)
+
+    <pre><code class="language-javascript" data-model="dynamicBitsocket"></code></pre>
+
+    <br />
+
+    <h3 class="is-size-4">Write new Transactions</h3>
+    Generate new transactions of this type with the Satchel BSV wallet library.
+
+    <pre><code class="language-javascript" data-model="buildTxScript"></code></pre>
+    
+
+      <br />
+
+      <div class="columns field">
+        <div class="column control">
+          <button class="button" data-on-click="goToStep" data-parameter="3">Back</button>
+        </div>
+        <div class="column control">
+          <button class="button" data-on-click="openDemo">Launch Demo App</button>
+        </div>
+      </div>
+      
+  </div>
+
 </section>
