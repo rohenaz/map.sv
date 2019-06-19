@@ -1,5 +1,5 @@
 # MAP: [Website](https://map.sv/?affiliate=$satchmo)
-[MAP.sv](https://map.sv/?affiliate=$satchmo) is a website for high level info on MAP protocol, the `bmapjs` library, and the BMAP Bitcoin application development strategy. It also includes a BMAP transaction & code generator.
+[MAP.sv](https://map.sv/?affiliate=$satchmo) is a website for high level info on MAP protocol, the [bmapjs](https://github.com/rohenaz/bmap) library, and the BMAP Bitcoin application development strategy. It also includes a BMAP transaction & code generator.
 
 ![last commit](https://img.shields.io/github/last-commit/rohenaz/map.sv.svg)
 ![license](https://img.shields.io/github/license/rohenaz/map.sv.svg?style=flat)
