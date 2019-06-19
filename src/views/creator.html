@@ -1,7 +1,7 @@
 <section data-controller="Mapsv.CreatorCntrl" class="creator">
 
   <div class="subsection" data-show="step1">
-    <h2>Craft BMAP Biolerplate</h2>
+    <h2>BMAP Biolerplate</h2>
 
     <p>This generator lets you create all the code and documentation you need to build a Bitcoin app.</p>
   
@@ -10,7 +10,7 @@
       You can also make a demo tx with your data right from this tool as well.</p>
       <br />
     <p class="control">
-      <button class="primary" data-on-click="goToStep" data-parameter="2">Generate Tx & Code</button>
+      <button class="primary" data-on-click="goToStep" data-parameter="2"><i class="fa fa-flask"></i>&nbsp; &nbsp; Start Building</button>
     </p>
   </div>
 
@@ -21,21 +21,25 @@
       We will add other content types here but for now, just markdown.</p>
     <div>
 
-      <div class="field is-grouped is-grouped-multiline">
-        <div class="control">
-          <div class="tags has-addons">
-            <span class="tag is-dark">text</span>
-            <span class="tag is-info">markdown</span>
-          </div>
+    <div class="field is-grouped is-grouped-multiline">
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag is-dark">text</span>
+          <span class="tag is-info">markdown</span>
         </div>
       </div>
-      <label class="checkbox">
-        <input type="checkbox" checked data-model="enableB">
-        Enable B Content
-      </label>
-      <textarea data-disabled="disableB" class="textarea" data-model="bcontent"></textarea>
+    </div>
+    <br />
+    <label class="checkbox">
+      <input type="checkbox" checked data-model="enableB">
+      Enable B Content
+    </label>
+    <br />
+    <br />
+    <textarea data-disabled="disableB" class="textarea" data-model="bcontent"></textarea>
 
-  <br />
+    <br />
+    <br />
 
   <button class="primary" data-on-click="goToStep" data-parameter="3">Next Step - MAP Attributes</button>
     <br />
@@ -60,7 +64,7 @@
 
     <div class="columns field">
       <div class="column">
-        <p class="control">app</p>
+        <span class="control">app</span>
       </div>
       <div class="column">
         <input type="text" class="input" placeholder="MyAppName" data-model="appField" data-on-blur="updatePreview">
@@ -69,7 +73,7 @@
 
     <div class="columns field">
       <div class="column">
-        <p class="control">type</p>
+        <span class="control">type</span>
       </div>
       <div class="column">
         <input type="text" class="input" placeholder="action_type" data-model="typeField" data-on-blur="updatePreview">
