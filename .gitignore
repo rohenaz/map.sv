@@ -6,3 +6,4 @@ build_cache
 .firebase
 firebase-debug.log
 firebase.json
+.idea

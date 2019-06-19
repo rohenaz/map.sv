@@ -4,10 +4,11 @@ MAP.sv is a website for high level info on MAP protocol, the `bmapjs` library, a
 ## Install
 ```bash
 $ npm install -g silica
+$ npm install
 ```
 
 ## Usage
-The watch commane will build, run, and watch for changes to the filesystem.
+The watch command will build, run, and watch for changes to the filesystem.
 
 ```bash
 $ silica watch
