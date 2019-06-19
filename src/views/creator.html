@@ -11,7 +11,7 @@
     
       <div class="subsection has-text-center generator-landing" data-show="step1">
         <div class="float">
-          <h2 class="has-text-center">BMAP Boilerplate Creator</h2>
+          <h1 class="has-text-center">BMAP Creator</h1>
     
           <h4>Build a Bitcoin App Right Now.</h4>
     
@@ -53,30 +53,31 @@
             <li>As an accesory (think file attachment)</li>
           </ul>
         </p>
-        <p>
-          <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Cheatsheet</a>
-        </p>
-        <div>
-    
-        <div class="field is-grouped is-grouped-multiline">
-          <div class="control">
-            <div class="tags has-addons">
-              <span class="tag is-dark">text</span>
-              <span class="tag is-info">markdown</span>
-            </div>
-          </div>
-        </div>
-        <br />
+
         <label class="checkbox">
           <input type="checkbox" checked data-model="enableB">
           Enable B Content
         </label>
-        <br />
-        <br />
-        <textarea data-disabled="disableB" class="textarea" data-model="bcontent"></textarea>
-    
-        <br />
-        <br />
+        
+        <div data-show="enableB">
+          <p>
+            <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Cheatsheet</a>
+          </p>
+      
+          <div class="field is-grouped is-grouped-multiline">
+            <div class="control">
+              <div class="tags has-addons">
+                <span class="tag is-dark">text</span>
+                <span class="tag is-info">markdown</span>
+              </div>
+            </div>
+          </div>
+          
+          <br />
+          <br />
+          <textarea data-disabled="disableB" class="textarea" data-model="bcontent"></textarea>
+        </div>
+        
         <div class="columns fixed">
           <p class="column">
             <button class="primary" data-on-click="goToStep" data-parameter="1"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;Cancel</button>
@@ -86,8 +87,6 @@
           </p>
         </div>
     
-        <br />
-        </div>
       </div>
       
       <div class="subsection" data-show="step3">

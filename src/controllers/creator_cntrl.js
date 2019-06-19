@@ -364,12 +364,6 @@ socket.onmessage = function(e) {
   getData () {
 
     let data = [
-      {"type": "str", "v": "19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut"},
-      {"type": "str", "v": this.bcontent },
-      {"type": "str", "v": "text/markdown"},
-      {"type": "str", "v": "UTF-8"},
-      {"type": "str", "v": "demo.md"},
-      {"type": "str", "v": "|"},
       {"type": "str", "v": "1PuQa7K62MiKCtssSLKy1kh56WWU7MtUR5"},
       {"type": "str", "v": "SET"},
       {"type": "str", "v": "app"},
@@ -377,6 +371,15 @@ socket.onmessage = function(e) {
       {"type": "str", "v": "type"},
       {"type": "str", "v": this.typeField},
     ]
+
+    if (this.enableB) {
+      data.unshift({"type": "str", "v": "19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut"},
+        {"type": "str", "v": this.bcontent },
+        {"type": "str", "v": "text/markdown"},
+        {"type": "str", "v": "UTF-8"},
+        {"type": "str", "v": "demo.md"},
+        {"type": "str", "v": "|"})
+    }
 
     // Set MAP Keys
     for (let key of this.keys) {
