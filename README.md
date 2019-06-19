@@ -1,8 +1,8 @@
 # MAP: [Website](https://map.sv/?affiliate=$satchmo)
 [MAP.sv](https://map.sv/?affiliate=$satchmo) is a website for high level info on [MAP](https://github.com/rohenaz/map) protocol, the [bmapjs](https://github.com/rohenaz/bmap) library, and the BMAP Bitcoin application development strategy. It also includes a BMAP transaction & code generator.
 
-![last commit](https://img.shields.io/github/last-commit/rohenaz/map.sv.svg)
-![license](https://img.shields.io/github/license/rohenaz/map.sv.svg?style=flat)
+[![last commit](https://img.shields.io/github/last-commit/rohenaz/map.sv.svg?style=flat)](https://github.com/rohenaz/map.sv/commits/master)
+[![license](https://img.shields.io/badge/license-Open%20BSV-brightgreen.svg?style=flat)](/LICENSE)
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat)](https://github.com/RichardLitt/standard-readme)
 [![app health](https://img.shields.io/website-up-down-green-red/https/map.sv.svg?label=status)](https://map.sv/?affiliate=$satchmo)
 
@@ -79,4 +79,4 @@ Support the development of this project and the [MAP](https://map.sv/?affiliate=
 Feel free to dive in! [Open an issue](https://github.com/rohenaz/map.sv/issues/new) or submit PRs.
 
 ## License
-![License](https://img.shields.io/github/license/rohenaz/map.sv.svg?style=flat)
+[![license](https://img.shields.io/badge/license-Open%20BSV-brightgreen.svg?style=flat)](/LICENSE)
