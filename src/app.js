@@ -1,4 +1,3 @@
-
 goog.module("mapsv")
 
 const AppCntrl = goog.require("controllers.app")
@@ -14,22 +13,25 @@ window['Mapsv'] = {
 Silica.setContext('Mapsv')
 Silica.compile(document)
 Silica.apply(() => {
-  Prism.highlightAll(false)
+
 })
 
 window.addEventListener('DOMContentLoaded', () => {
   
   // al pre tags on the page
-  const pres = document.getElementsByClassName('.copyme')
+  const pres = document.getElementsByClassName('copyme')
   //
   // reformat html of pre tags
-  if (pres.length) {
-    for (let i = 0; i < pres.length; i++) {
-        console.log('inject copy?', isPrismClass(pres[i]))
+  let len = pres.length
+  if (len > 0) {
+    debugger
+    for (let i = 0; i < len; i++) {
+      console.log('inject copy?', isPrismClass(pres[i]), i, pres[i])
       // check if its a pre tag with a prism class
       if (isPrismClass(pres[i])) {
+
         // insert code and copy element
-        pres[i].innerHTML = `<div class="copy">copy</div><code class="${pres[i].className}">${pres[i].innerHTML}</code>`      
+        pres[i].innerHTML = `<div class="copy">copy</div><code>${pres[i].innerHTML}</code>`      
       }
     }
   }
@@ -55,6 +57,13 @@ window.addEventListener('DOMContentLoaded', () => {
   //
   // helper function
   function isPrismClass(preTag) { 
-    return preTag.className.substring(0, 8) === 'language'
+    return Array.from(preTag.classList).some((className) => {
+      return className.substring(0, 8) === 'language'
+    })
   }
+
+  Silica.apply(() => {
+    Prism.highlightAll(false)
+  })
+
 })

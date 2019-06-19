@@ -7,7 +7,7 @@ class CreatorCntrl extends Silica.Controllers.Base {
 
   constructor(element) {
     super(element)
-    this.bcontent = `# Hello world`
+    this.bcontent = `# Welcome to the Future ![image](b://5a37057a8bfddb76c60e226f1fd20eac94ba4dc299a53dd134df026341e94571)`
     this.appField = 'demo-app'
     this.typeField = 'comment'
 
@@ -21,6 +21,11 @@ class CreatorCntrl extends Silica.Controllers.Base {
     this.step4 = false
 
     this.keys = []
+
+    // Make a random api key
+    let privateKey = satchel.bsv.PrivateKey.fromRandom()
+    let publicKey = satchel.bsv.PublicKey.fromPrivateKey(privateKey)
+    this.apiKey = this.address() || satchel.bsv.Address.fromPublicKey(publicKey)
 
     window.addEventListener('popstate', () => {
       console.log('pop!')
@@ -52,14 +57,14 @@ class CreatorCntrl extends Silica.Controllers.Base {
 }`
   }
 
-  bitqueryFetch (apiKey = this.address()) {
+  bitqueryFetch () {
     return `// Turn the query into base64 encoded string.
 let url = 'https://b.map.sv/q/'
 
 // Attach API KEY as header
 let header = {
   // Replace with your API key
-  headers: { key: '` + apiKey + `' }
+  headers: { key: '` + this.apiKey + `' }
 }
 
 // base 64 query
@@ -175,12 +180,7 @@ socket.onmessage = function(e) {
   dynamicBitqueryScript () {
     
     let str = this.dynamicBitquery()
-    
-    // Make a random api key
-    let privateKey = satchel.bsv.PrivateKey.fromRandom()
-    let publicKey = satchel.bsv.PublicKey.fromPrivateKey(privateKey)
-    let apiKey = satchel.bsv.Address.fromPublicKey(publicKey)
-    str += this.bitqueryFetch(apiKey)
+    str += this.bitqueryFetch(this.apiKey)
     str += this.dynamicBitsocket()
 
     return str

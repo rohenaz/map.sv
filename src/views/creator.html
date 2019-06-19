@@ -1,17 +1,38 @@
 <section data-controller="Mapsv.CreatorCntrl" class="creator">
 
-  <div class="subsection" data-show="step1">
-    <h2>BMAP Biolerplate</h2>
+  <div class="subsection has-text-center generator-landing" data-show="step1">
+    <div class="float">
+      <h2 class="has-text-center">BMAP Boilerplate Creator</h2>
 
-    <p>This generator lets you create all the code and documentation you need to build a Bitcoin app.</p>
-  
-    <p>Start by creating some B content, then assign some MAP attributes and generate a working website template to build your app.
+      <h4>Build a Bitcoin App Right Now.</h4>
+
       <br />
-      You can also make a demo tx with your data right from this tool as well.</p>
+
+      <div class="columns io">
+        <div class="column">
+          <h5>Inputs:</h5>
+          <ul>
+            <li>B:// Content</li>
+            <li>MAP Attributes</li>
+            <li>Tx Signature</li>
+          </ul>      
+        </div>
+        <div class="column">
+          <h5>Outputs:</h5>
+          <ul>
+            <li>Bitcoin Query</li>
+            <li>App Display</li>
+            <li>User Wallet</li>
+          </ul>
+        </div>
+      </div>
+
       <br />
-    <p class="control">
-      <button class="primary" data-on-click="goToStep" data-parameter="2"><i class="fa fa-flask"></i>&nbsp; &nbsp; Start Building</button>
-    </p>
+
+      <p class="control has-text-center">
+        <button class="primary" data-on-click="goToStep" data-parameter="2"><i class="fa fa-flask"></i>&nbsp; &nbsp; Start Building</button>
+      </p>
+    </div>
   </div>
 
   <div class="subsection" data-show="step2">
@@ -40,13 +61,13 @@
 
     <br />
     <br />
-    <div class="columns">
-      <div class="column">
+    <div class="columns fixed">
+      <p class="column">
         <button class="primary" data-on-click="goToStep" data-parameter="1"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;Cancel</button>
-      </div>
-      <div class="column has-text-right">
+      </p>
+      <p class="column has-text-right">
           <button class="primary" data-on-click="goToStep" data-parameter="3"><i class="fa fa-chevron-right"></i>&nbsp; &nbsp; MAP Attributes</button>
-      </div>
+      </p>
     </div>
 
     <br />
@@ -62,7 +83,7 @@
   
     <div class="columns field">
       <div class="column">
-        <b>Key Name</b>
+        <b>Key</b>
       </div>
       <div class="column">
         <b>Value</b>
@@ -112,7 +133,7 @@
 
     <br />
 
-    <div class="wallet" data-controller="Mapsv.WalletCntrl" data-include="'views/wallet.html'"></div>
+    <div class="subsection wallet" data-controller="Mapsv.WalletCntrl" data-include="'views/wallet.html'"></div>
     <br />
 
     <p data-show="fatURI">
@@ -122,11 +143,11 @@
         <p >To generate a real transaction with this data, sign in with a wif. If you skip this step, the demo app will just be an empty page if no txs exists on the chain with these MAP keys.</p>
     </div>
     
-    <div class="field columns">
+    <div class="columns fixed">
       
-      <div class="column control">
+      <p class="column control">
         <button class="primary" data-on-click="goToStep" data-parameter="2"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;Back</button>
-      </div>
+      </p>
     
       <p class="control column has-text-right">
           <button class="primary" data-on-click="goToStep" data-parameter="4"><i class="fa fa-chevron-right"></i>&nbsp;&nbsp; Skip (Code Only)</button>
@@ -160,22 +181,12 @@
     <div data-show="responseTx">
       <b>Successfully Generated Transaction</b>
       <p data-model="responseTx"></p>
+      <br />
     </div>
-
-    <br />
-
-    <h4>App Demo</h4>
-    <p>For a complete example, click this magical button.</p>
     
-    <p>This opens the demo in a popup. Make sure it's not blocked.</p>
-
-    <br />
-    <div class="field has-text-center">
-      <button class="primary" data-on-click="openDemo"><i class="fas fa-magic"></i> &nbsp;&nbsp; Launch App</button>
-    </div>
-
-    <br />
-    <br />
+    <p>
+      Here are the code snippets for the main components of your app. Click "Launch App" below to see a live demo.
+    </p>
 
     <h4>BitQuery</h4>
     Query matching your records. <a href="https://docs.planaria.network/#/query" target="_blank">More info</a>
@@ -204,9 +215,12 @@
 
     <br />
   
-    <div class="columns field">
-      <div class="column control">
+    <div class="columns fixed">
+      <p class="column control">
         <button class="primary" data-on-click="goToStep" data-parameter="3"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;Back</button>
+      </p>
+      <p class="column has-text-right">
+        <button class="primary" data-on-click="openDemo"><i class="fas fa-magic"></i> &nbsp;&nbsp; Launch App</button>
       </div>
     </div>
       
