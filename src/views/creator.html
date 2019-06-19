@@ -1,7 +1,7 @@
 <section data-controller="Mapsv.CreatorCntrl" class="creator">
 
   <div class="subsection" data-show="step1">
-    <h2 class="is-size-2">Craft BMAP Biolerplate</h2>
+    <h2>Craft BMAP Biolerplate</h2>
 
     <p>This generator lets you create all the code and documentation you need to build a Bitcoin app.</p>
   
@@ -10,13 +10,13 @@
       You can also make a demo tx with your data right from this tool as well.</p>
       <br />
     <p class="control">
-      <button class="button" data-on-click="goToStep" data-parameter="2">Generate Tx & Code</button>
+      <button class="primary" data-on-click="goToStep" data-parameter="2">Generate Tx & Code</button>
     </p>
   </div>
 
   <div class="subsection" data-show="step2">
-    <h2 class="is-size-2">Step 1</h2>
-    <h5 class="is-size-5">B Content</h5>
+    <h2>Step 1</h2>
+    <h4>B Content</h4>
     <p>Add some markdown here. Here's a <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">cheatsheet</a> for reference.<br />
       We will add other content types here but for now, just markdown.</p>
     <div>
@@ -37,19 +37,19 @@
 
   <br />
 
-  <button class="button" data-on-click="goToStep" data-parameter="3">Next Step - MAP Attributes</button>
+  <button class="primary" data-on-click="goToStep" data-parameter="3">Next Step - MAP Attributes</button>
     <br />
     </div>
   </div>
   
   <div class="subsection" data-show="step3">
-    <h2 class="is-size-2">Step 2</h2>
-    <h5 class="is-size-5">MAP Attributes</h5>
+    <h2>Step 2</h2>
+    <h4>MAP Attributes</h4>
 
     <p>The "app" and "type" keys are required. Set the "app" key to a unique namespace for your application, and set "type" to differentiate between different actions within your app, such as "comment" or  "vote".</p>
     <br />
   
-    <div class="columns">
+    <div class="columns field">
       <div class="column">
         <b>Key Name</b>
       </div>
@@ -58,7 +58,7 @@
       </div>
     </div>
 
-    <div class="columns">
+    <div class="columns field">
       <div class="column">
         <p class="control">app</p>
       </div>
@@ -67,7 +67,7 @@
       </div>
     </div>
 
-    <div class="columns">
+    <div class="columns field">
       <div class="column">
         <p class="control">type</p>
       </div>
@@ -96,8 +96,8 @@
   
     <br />
 
-    <h5 class="is-size-5">OP RETURN PREVIEW</h5>
-    <pre><code class="language-markup" data-model="opReturnPreview"></code></pre>
+    <h4>OP RETURN PREVIEW</h4>
+    <pre class="language-markup" data-model="opReturnPreview"></pre>
 
     <br />
 
@@ -111,10 +111,10 @@
       </p>
 
       <p class="control column">
-        <button class="button" data-on-click="makeBmapTx" data-model="generateText"></button>
+        <button class="primary" data-on-click="makeBmapTx" data-model="generateText"></button>
       </p>
       <p class="control column">
-        <button class="button" data-on-click="goToStep" data-parameter="4">Skip (Code Only)</button>
+        <button class="primary" data-on-click="goToStep" data-parameter="4">Skip (Code Only)</button>
       </p>
     </div>
 
@@ -135,49 +135,63 @@
 
   <div class="subsectoin" data-show="step4">
 
-    <h2 class="is-size-2">Example Code</h2>
+    <h2>Step 3</h2>
+    <h4>Build The App</h4>
+
+    <br />
 
     <div data-show="responseTx">
       <b>Successfully Generated Transaction</b>
       <p data-model="responseTx"></p>
     </div>
 
-    <h3 class="is-size-4">BitQuery</h3>
+    <br />
+
+    <h4>App Demo</h4>
+    <p>For a complete example, click this magical button.</p>
+    
+    <p>This opens the demo in a popup. Make sure it's not blocked.</p>
+
+    <br />
+    <div class="field has-text-center">
+      <button class="primary" data-on-click="openDemo"><i class="fas fa-magic"></i> &nbsp;&nbsp; Launch App</button>
+    </div>
+
+    <br />
+    <br />
+
+    <h4>BitQuery</h4>
     Query matching your records. <a href="https://docs.planaria.network/#/query" target="_blank">More info</a>
 
-    <pre><code class="language-json" data-model="dynamicBitquery"></code></pre>
+    <pre class="language-json copyme" data-model="dynamicBitquery"></pre>
     
     <br />
 
-    <h3 class="is-size-4">Planarium Query</h3>
+    <h4>Planarium Query</h4>
     <p>Query the BMAP Planarium (API) for records of this type. <a href="https://docs.planaria.network/#/socket">More info</a></p>
-    <pre><code class="language-javascript" data-model="bitqueryFetch"></code></pre>
+    <pre class="language-javascript copyme" data-model="bitqueryFetch"></pre>
   
     <br />
 
-    <h3 class="is-size-4">Planarium Socket Connection</h3>
+    <h4>Planarium Socket Connection</h4>
     Listen for new transactions of this type. (Neon Planaria does not yet support a standard socket connection.)
 
-    <pre><code class="language-javascript" data-model="dynamicBitsocket"></code></pre>
+    <pre class="language-javascript copyme" data-model="dynamicBitsocket"></pre>
 
     <br />
 
-    <h3 class="is-size-4">Write new Transactions</h3>
+    <h4>Write new Transactions</h4>
     Generate new transactions of this type with the Satchel BSV wallet library.
 
-    <pre><code class="language-javascript" data-model="buildTxScript"></code></pre>
-    
+    <pre class="language-javascript copyme" data-model="buildTxScript"></pre>
 
-      <br />
-
-      <div class="columns field">
-        <div class="column control">
-          <button class="button" data-on-click="goToStep" data-parameter="3">Back</button>
-        </div>
-        <div class="column control">
-          <button class="button" data-on-click="openDemo">Launch Demo App</button>
-        </div>
+    <br />
+  
+    <div class="columns field">
+      <div class="column control">
+        <button class="primary" data-on-click="goToStep" data-parameter="3">Back</button>
       </div>
+    </div>
       
   </div>
 

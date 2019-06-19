@@ -5,10 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Magic Attribute Protocol</title>
-    <link rel="stylesheet" href="/css/bulma.min.css" type="text/css" media="all">
     <link rel="stylesheet" href="/css/styles.css" type="text/css" media="all">
     <link rel="stylesheet" href="/css/prism.css" type="text/css" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Rubik|Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" type="text/css" media="all">
     <script src="/node_modules/bsv-satchel/dist/satchel.min.js" type="application/javascript"></script>
+    <script src="/js/clipboard.min.js" type="application/javascript"></script>
     <script src="/js/prism.js" type="application/javascript"></script>
 
   </head>
@@ -16,31 +18,35 @@
     <div id="container">
       <div class="docs">
         <section>
-            <h2 class="is-size-2">Magic Attribute Protocol</h2>
-        
+            <h2>Magic Attribute Protocol</h2>
+            
             <p>MAP is a Bitcoin OP_RETURN protocol for associating `key -> value` pairs. Keys are like field names in a database, and the "value" is the data being inserted / deleted / updated.</p>
         
-            <pre><code class="language-markup">OP_RETURN | input
+            <pre class="language-markup">OP_RETURN | input
 MAP
 SET | DELETE
 key
-value</code></pre>
+value</pre>
             <a href="https://github.com/rohenaz/map" alt="Magic Attribute Protocol">Documentation</a>
           </section>
           
           <section>
-            <h3 class="is-size-3">BMAP - Bitcoin App Strategy</h3>
-    
-            <p>BMAP is the general term for a technique for working with OP_RETURN data within Bitcoin transactions. 
-              The goal is to make Bitcoin app development fast, easy, and interconnected.</p>
+            <h4>BMAP - Bitcoin App Strategy</h4>
+
+            <p>BMAP is a technique for working with OP_RETURN data within Bitcoin transactions. 
+              The goal is to make Bitcoin app development fast, easy, and encourage sharing data between BMAP apps.</p>
               
             <p>This is an alternative approach to registering a new Bitcom protocol prefix and reinventing the wheel. There are several existing protocols that can be combined to create almost anything. In most cases a new protocol is not needed, and makes standardization more difficult.</p>
     
             <p>The name comes from combining B protocol with MAP using OP_RETURN protocol pipelining:</p>
     
-            <pre><code class="language-markup">OP_RETURN | B | MAP</code></pre>
+            <pre class="language-markup">OP_RETURN | B | MAP</pre>
     
-            <h5 class="is-size-5">Advantages</h5>
+            <br />
+            
+            <br />
+
+            <h4>Advantages</h4>
 
             <ul>
               <li>Works well with other protocols</li>
@@ -53,14 +59,14 @@ value</code></pre>
             <p>BMAP as a strategy encompasses more than just these two protocols, but BCDMAPAIP... etc is not a very good name.</p>
           </section>
           <section>
-            <h3 class="is-size-3">"BMAP" - A TXO Parser</h3>
-        
+            <h4>"BMAP" - A TXO Parser</h4>
+
             <p>Because MAP is a variable width protocol, and is designed to be used with other protocols within the same tx, 
               transactions often have more pushdatas than many Bitcom protocols.
               With this <a href="https://github.com/interplanaria/txo" target="_blank">TXO</a> parser, TXO formatted transaction data can be transformed into an easy to work with, human readable version.</p>
         
-              <pre><code class="language-markup">npm install bmapjs
-require('bmapjs')</code></pre>
+              <pre class="language-markup">npm install bmapjs
+require('bmapjs')</pre>
             <p><b>Supports</b></p>
             <ul>
               <li>B://</li>
@@ -72,10 +78,10 @@ require('bmapjs')</code></pre>
           </section>
         
           <section>
-            <h3 class="is-size-3">BMAP Planaria</h3>
-        
+            <h4>BMAP Planaria</h4>
+
             <p>
-              Address: <a href="https://b.map.sv" alt="BMAP Planaria">1BM66TebgfZLfixCKdtn8yAcgwmTRRtLfk</a>
+              <a href="https://b.map.sv" alt="BMAP Planaria">https://b.map.sv</a>
             </p>
         
             <p> It's easy to get started building BMAP applications. You can use our public planaria as a backend for your app and be up and running in just minutes.</p>
@@ -84,16 +90,20 @@ require('bmapjs')</code></pre>
 
             <p>Then, we can generate some code to kickstart your app development.</p>
 
-            <h5 class="is-size-5"></h5>
+            <h4></h4>
             <ul>
               <li>Auto transforms TXO records to BMAP objects</li>
               <li>Pushdata index is no longer important</li>
               <li>Built in Author Identity verification</li>
             </ul>
 
-            <h5 class="is-size-5">Example Query</h5>
+            <br />
 
-            <pre class="language-json"><code>{
+            <br />
+
+            <h4>Example Query</h4>
+            
+            <pre class="copyme language-json">{
   "v": 3,
   "q": {
     "find": {
@@ -101,9 +111,18 @@ require('bmapjs')</code></pre>
     },
     "limit": 10
   }
-}</code></pre>
+}</pre>
         
             <img src="https://i.boring.host/18ADgHjz.png" style="width: 100%" />
+          </section>
+
+          <section>
+            <h4>BMAP Apps</h4>
+
+            <ul>
+              <li><a href="https://metalens.allaboard.cash">MetaLens</a></li>
+              <li><a href="https://tonicpow.com">TonicPow</a></li>
+            </ul>
           </section>
       </div>
       <div class="creator" data-include="'/views/creator.html'">

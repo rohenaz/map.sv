@@ -274,11 +274,16 @@ socket.onmessage = function(e) {
   }
 
   openDemo () {
+    
     // Open Demo Popup
     let popup = open('', 'BMAP App Demo - ' + this.appField, "width=360,height=260")
 
     let satchelScript = popup.document.createElement('script')
-    satchelScript.src = '/node_modules/bsv-satchel/dist/satchel.min.js'
+    satchelScript.src = 'https://cdn.jsdelivr.net/npm/bsv-satchel/dist/satchel.min.js'
+    satchelScript.onload = () => {
+      debugger
+      console.log('satchel loaded')
+    }
     popup.document.head.appendChild(satchelScript)
 
     let script = popup.document.createElement('script')
@@ -291,9 +296,12 @@ socket.onmessage = function(e) {
     let satchelButton = popup.document.createElement('button')
     satchelButton.innerText = 'Load Wif'
     satchelButton.onclick = () => {
-      let wif = prompt('Enter WIF')
-      if (wif.length > 0) {
-        console.log('wif', '')
+      let wif = prompt('Enter WIF', '')
+      // TODO
+      if (wif && wif.length === 52) {
+        popup.satchel.login(wif, () => {
+          console.log('logged in')
+        })
       }
     }
     popup.document.body.appendChild(satchelButton)

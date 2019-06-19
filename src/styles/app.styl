@@ -1,30 +1,11 @@
 global-reset()
 
-@font-face
-  font-family: 'national_parkheavy'
-  src: url('fonts/nationalpark-heavy-webfont.woff2') format('woff2'), url('fonts/nationalpark-heavy-webfont.woff') format('woff')
-  font-weight: normal
-  font-style: normal
-
-
-@font-face
-  font-family: 'national_park'
-  src: url('fonts/nationalpark-regular-webfont.woff2') format('woff2'), url('fonts/nationalpark-regular-webfont.woff') format('woff')
-  font-weight: normal
-  font-style: normal
-
-@font-face
-  font-family: 'national_parkthin'
-  src: url('fonts/nationalpark-thin-webfont.woff2') format('woff2'), url('fonts/nationalpark-thin-webfont.woff') format('woff')
-  font-weight: normal
-  font-style: normal
-
 body
   color: #293241
 
 *
   box-sizing: border-box
-  font-family: 'national_park', sans-serif
+  font-family: Rubik, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
@@ -36,7 +17,7 @@ a
 
 h1, h2, h3, h4, h5, h6
   color: #EE6C4D
-  font-family: 'national_park', sans-serif
+  font-family: Ubuntu, sans-serif
   font-weight: bold
   text-transform: uppercase
   letter-spacing: .15rem
@@ -47,6 +28,15 @@ h1, h2, h3, h4, h5, h6
 section
   padding: 2rem
 
+.columns
+  display: flex
+
+.column
+  flex: 1
+
+.field
+  align-items: center
+ 
 .docs
   background-color: #fff
   position: absolute
@@ -56,35 +46,3 @@ section
   left: 0
   @media (max-width: 910px)
     width: 100vw
-
-.creator
-  position: absolute
-  right: 0
-  background-color: #293241
-  color: #E0FBFC
-  width: 50vw
-  height: 100vh
-  overflow: auto
-  @media (max-width: 910px)
-    display: none
-  textarea
-    width: 100%
-
-  .hidden
-    display: none
-
-
-/* override bulma */
-.number
-  align-items: inherit
-  background-color: inherit
-  border-radius: inherit
-  display: inherit
-  font-size: inherit
-  height: inherit
-  justify-content: inherit
-  margin-right: inherit
-  min-width: inherit
-  padding: inherit
-  text-align: inherit
-  vertical-align: inherit
