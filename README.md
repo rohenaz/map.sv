@@ -6,7 +6,7 @@
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat)](https://github.com/RichardLitt/standard-readme)
 [![app health](https://img.shields.io/website-up-down-green-red/https/map.sv.svg?label=status)](https://map.sv/?affiliate=$satchmo)
 
-[![Screenshot](.github/images/website-screenshot.png)](https://map.sv/?affiliate=$satchmo)
+[![Screenshot](.github/images/website-example.gif)](https://map.sv/?affiliate=$satchmo)
 
 ## Table of Contents
 - [Installation](#installation)
