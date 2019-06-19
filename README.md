@@ -19,8 +19,13 @@
 - [License](#license)
 
 ## Installation
+First install [silica](https://github.com/BakedSoftware/silica):
 ```bash
 $ npm install -g silica
+```  
+
+Next install all required packages for the project:
+```bash
 $ npm install
 ``` 
 
@@ -29,12 +34,16 @@ The watch command will build, run, and watch for changes to the filesystem.
 
 ```bash
 $ silica watch
-``` 
+```  
+
+Navigate to the website via `localhost:8080`
 
 ### Deploying the Website
 Follow [this installation guide](https://github.com/rohenaz/allaboard-faucet#installation) for setting up a Firebase website
 
 Once your firebase environment is setup, it's as easy as `firebase deploy` to push code.
+
+You can alternatively use npm as well:
 ```bash
 $ npm run deploy
 ```
@@ -43,17 +52,10 @@ $ npm run deploy
 This website is organized as follows:
 ```
 - /build/ (all public accessible assets, will be deployed)
-    - /css/
-    - /images/
-    - /js/
-    - /views/
-    - app.js
-    - manifest.json
-    - index.html
-    - ror.xml
-    - site.webmanifest
-    - sitemap.xml
-```
+- /src/ (raw files for silica application)
+``` 
+
+This project uses [silica](https://github.com/BakedSoftware/silica).
 
 ## Examples
 The [MAP.sv website](https://map.sv/?affiliate=$satchmo) is the example of this repo.
@@ -62,7 +64,7 @@ The [MAP.sv website](https://map.sv/?affiliate=$satchmo) is the example of this 
 Always use the language's best practices
 
 ## Usage
-Projects that used [MAP](https://github.com/rohenaz/map) and [bmap](https://github.com/rohenaz/bmap):
+We're using it! Some projects that used [MAP](https://github.com/rohenaz/map) and [bmap](https://github.com/rohenaz/bmap):
 - [MetaLens](https://metalens.allaboard.cash/?affiliate=$satchmo)
 - [TonicPow](https://tonicpow.com/?affiliate=$satchmo)
 
