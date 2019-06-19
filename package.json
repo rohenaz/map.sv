@@ -1,10 +1,37 @@
 {
-  "name": "mapsv",
+  "name": "map.sv",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Satchmo",
-  "license": "MIT",
+  "author": "Satchmo <satchmo@tonicpow.com>",
+  "contributors": [
+    {
+      "name": "Satchmo",
+      "url": "https://github.com/rohenaz/"
+    },
+    {
+      "name": "MrZ",
+      "url": "https://github.com/mrz1836/"
+    },
+    {
+      "name": "Attila",
+      "url": "https://github.com/attilaaf/"
+    }
+  ],
+  "bugs": "https://github.com/rohenaz/map.sv",
+  "homepage": "https://map.sv",
+  "license": "GNU-V3",
   "private": true,
+  "keywords": [
+    "map.sv",
+    "mapsv",
+    "map",
+    "bmap",
+    "magic attribute protocol"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rohenaz/map.sv/"
+  },
   "dependencies": {
     "bsv-satchel": "^0.1.4",
     "bulma": "^0.7.5",
