@@ -1,4 +1,5 @@
 @require('base')
+
 .creator
   position: absolute
   right: 0
@@ -22,16 +23,37 @@
   .io
     ul
       border-radius: $radius
-      background-color: #111
+      background-color: #333
       color: #00fbff  
-      margin: 0 1rem
+      margin: 0 auto
       padding: 1rem
+      max-width: 14rem
   ul
     padding: 0
     list-style: none
     li
       line-height: 1.5rem
   
+  .heading
+    background-color: #333
+    padding: .5rem
+    ul
+      padding: 0
+      margin: 0
+      li
+        transition: all .5s
+        span
+          font-weight: bold
+          border-radius: $radius
+          display: inline-block
+          padding: 1rem
+          color: #666
+        &.active
+          span
+            font-size: 1.5rem
+            color: #00fbff
+            background-color: #1F1F1F
+          
 
   .fixed
     align-items: center

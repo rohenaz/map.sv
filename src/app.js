@@ -24,7 +24,6 @@ window.addEventListener('DOMContentLoaded', () => {
   // reformat html of pre tags
   let len = pres.length
   if (len > 0) {
-    debugger
     for (let i = 0; i < len; i++) {
       console.log('inject copy?', isPrismClass(pres[i]), i, pres[i])
       // check if its a pre tag with a prism class

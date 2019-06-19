@@ -19,6 +19,7 @@ class CreatorCntrl extends Silica.Controllers.Base {
     this.step2 = false
     this.step3 = false
     this.step4 = false
+    this.step5 = false
 
     this.keys = []
 
@@ -195,6 +196,8 @@ socket.onmessage = function(e) {
     this.step2 = false
     this.step3 = false
     this.step4 = false
+    this.step5 = false
+    
     Silica.goTo('?p=' + param)
     // history.pushState({}, '?p=' + param,)
     // window.dispatchEvent(new Event('popstate'))
@@ -210,6 +213,9 @@ socket.onmessage = function(e) {
       break
       case 4:
         this.step4 = true
+      break
+      case 5:
+        this.step5 = true
     }
   }
 
@@ -230,7 +236,7 @@ socket.onmessage = function(e) {
         console.log('broadcasting...')
         this.broadcastTx()
       }
-      this.goToStep(null, 4)
+      this.goToStep(null, 5)
       return
     }
 
@@ -273,6 +279,27 @@ socket.onmessage = function(e) {
     return satchel.isLoggedIn()
   }
 
+  showHeading () {
+    return !this.step1
+  }
+
+  activeClass (param) {
+    switch (parseInt(param)) {
+      case 1:
+        return this.step1 ? 'active' : ''
+      case 2:
+        return this.step2 ? 'active' : ''
+      case 3:
+        return this.step3 ? 'active' : ''
+      case 4:
+        return this.step4 ? 'active' : ''
+      case 5:
+        return this.step5 ? 'active' : ''
+      default:
+        return ''
+    } 
+  }
+
   openDemo () {
     
     // Open Demo Popup
@@ -281,7 +308,6 @@ socket.onmessage = function(e) {
     let satchelScript = popup.document.createElement('script')
     satchelScript.src = 'https://cdn.jsdelivr.net/npm/bsv-satchel/dist/satchel.min.js'
     satchelScript.onload = () => {
-      debugger
       console.log('satchel loaded')
     }
     popup.document.head.appendChild(satchelScript)
