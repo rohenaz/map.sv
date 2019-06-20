@@ -303,7 +303,7 @@ socket.onmessage = function(e) {
   openDemo () {
     
     // Open Demo Popup
-    let popup = open('', 'BMAP App Demo - ' + this.appField, "width=360,height=260")
+    let popup = open('', 'BMAP App Demo - ' + this.appField, "width=660,height=460")
 
     let satchelScript = popup.document.createElement('script')
     satchelScript.src = 'https://cdn.jsdelivr.net/npm/bsv-satchel/dist/satchel.min.js'
