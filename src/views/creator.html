@@ -46,8 +46,23 @@
       </div>
     
       <div class="subsection" data-show="step2">
-        <h3><i class="fas fa-file"></i>&nbsp;&nbsp;B Data</h3>
-        <p><a href="https://github.com/unwriter/B" target="_blank">Specification</a></p>
+        <div class="columns align-items">
+          <div class="column">
+            <h3><i class="fas fa-file"></i>&nbsp;&nbsp;B Data</h3>
+          </div>
+          <div class="column">
+            <div class="has-text-right">
+              <div style="display: inline-block;">
+                <label class="switch">
+                  <input type="checkbox" checked data-model="enableB">
+                  <span class="switch-slider round"></span>
+                </label>        
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <p><i class="fas fa-file"></i>&nbsp;&nbsp;<a href="https://github.com/unwriter/B" target="_blank">Specification</a></p>
         <p>
           B protocol provides a standard for storing specific data within your Bitcoin record.
         </p>
@@ -55,21 +70,9 @@
         <p>This is often used as the "body" of your tx, but can also be an attachment.</p>
         
         <p>Any valid <a href="https://www.iana.org/assignments/media-types/media-types.xhtml" target="_blank">Media Type</a> can be included here.</p>
-
-        <div>
-          <div style="display: inline-block;">
-            <label class="switch">
-              <input type="checkbox" checked data-model="enableB">
-              <span class="switch-slider round"></span>
-            </label>        
-          </div>
-          <div style="display: inline-block;">
-              &nbsp; &nbsp; Include B Content
-          </div>
-        </div>
         
         <br />
-        
+
         <div data-show="enableB">
           <div class="field is-grouped is-grouped-multiline">
             <div class="control">
@@ -80,6 +83,8 @@
             </div>
           </div>
           
+          <br />
+
           <textarea data-disabled="disableB" class="textarea" data-model="bcontent"></textarea>
           <p>
             <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Cheatsheet</a>
@@ -240,13 +245,13 @@
         
         <br />
     
-        <h4>Planarium Query</h4>
+        <h4>Planarium AIP</h4>
         <p>Query the BMAP Planarium (API) for records of this type.</p>
         <pre class="language-javascript copyme" data-model="bitqueryFetch"></pre>
       
         <br />
     
-        <h4>Planarium Socket Connection</h4>
+        <h4>Real Time Events</h4>
         Listen for new transactions of this type. <a href="https://docs.planaria.network/#/socket" target="_blank">More info</a> (Neon Planaria does not include support an SSE connection.)
     
         <pre class="language-javascript copyme" data-model="dynamicBitsocket"></pre>
