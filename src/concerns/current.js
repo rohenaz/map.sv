@@ -7,7 +7,8 @@ class Current {
     if (!instance) {
       instance = this
 
-    this.walletInitialized = false
+    this.walletInitialized = satchel && satchel.isLoggedIn()
+    this.pendingTx = null
     }
 
     return instance

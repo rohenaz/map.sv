@@ -5518,10 +5518,10 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
 
-silica@latest@next:
-  version "0.60.0-beta8"
-  resolved "https://registry.yarnpkg.com/silica/-/silica-0.60.0-beta8.tgz#4ba985f9b34fbcf1895cbf884d5ac09a0bf28773"
-  integrity sha512-olo3V/adx0BZSilW6Vko5JkPp3nSN03udYxEaF18OBexBE2vwtrsnbYB0ozZxrh3+UhX9vXY03BbvISyMMhnWQ==
+silica@next@latest:
+  version "0.60.0-beta9"
+  resolved "https://registry.yarnpkg.com/silica/-/silica-0.60.0-beta9.tgz#d1bc288670aff155b39911583545f8986d3a8170"
+  integrity sha512-r4utIJ9Yr5XB8Zch/Wv3kZ/k4JQcFUV6zlUCQLXZKcW8fVFXSZaWHRNcO1TJLYTDQ7/I2HPg7zGmuaKd3d5/8g==
   dependencies:
     commander "^2.15.1"
     csso "^3.5.0"

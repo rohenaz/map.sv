@@ -1,5 +1,27 @@
 <div data-show="Current.walletInitialized">
-  <h5>Wallet</h5>
+  <h5><i class="fas fa-wallet"></i>&nbsp;&nbsp;Wallet</h5>
   <pre class="language-markup">Address: <span data-model="address"></span><br >
 Balance: <span data-model="balance"></span></pre>
+</div>
+
+<div class="has-text-center balance-warning" data-show="!balance">
+  <p>
+    Fund this address to generate a Tx
+  </p>
+  <div class="qrcode" data-model="qrCodeSvg"></div>
+</div>
+
+<div data-show="!Current.walletInitialized">
+  <p >To generate a real transaction with your data, sign in with a wif, or create a new wallet.</p>
+  <p>You can skip this step, but the demo app will be an empty page if no Bitcoin txs match these MAP keys.</p>
+
+  <br />
+  <div class="columns">
+    <div class="column has-text-center">
+      <button class="primary" data-on-click="signup"><i class="fab fa-bitcoin"></i>&nbsp;&nbsp;Create Wallet</button>
+    </div>
+    <div class="column has-text-center">
+      <button class="primary" data-on-click="makeBmapTx"><i class="fa fa-sign-in-alt"></i>&nbsp;&nbsp;Import Wif Key</button>
+    </div>
+  </div>
 </div>

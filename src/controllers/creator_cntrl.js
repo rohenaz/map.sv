@@ -11,8 +11,6 @@ class CreatorCntrl extends Silica.Controllers.Base {
     this.appField = 'demo-app'
     this.typeField = 'comment'
 
-    this.pendingTx = null
-
     this.enableB = true
 
     this.step1 = true
@@ -32,6 +30,12 @@ class CreatorCntrl extends Silica.Controllers.Base {
       console.log('pop!')
     })
 
+    this.broadcastSub = Silica.sub('tx-broadcasted', (resTx) => {
+      
+      this.responseTx = resTx.hash
+      this.goToStep(null, 5)
+    })
+
     window.Current = Current
   }
 
@@ -45,6 +49,10 @@ class CreatorCntrl extends Silica.Controllers.Base {
 
   href () {
     return window.location.href
+  }
+
+  onDestroy () {
+    Silica.unsub(this.broadcastSub)
   }
 
   dynamicBitquery () {
@@ -161,7 +169,7 @@ function createTx () {
   }
 
   address () {
-    return satchel.getAddressStr()
+    return satchel.isLoggedIn() ? satchel.getAddressStr() : null
   }
 
   dynamicBitsocket () {
@@ -187,8 +195,11 @@ socket.onmessage = function(e) {
     return str
   }
 
+  generateDisabled () {
+    return !Current.walletInitialized || !satchel || !satchel.isLoggedIn() || satchel.getBalance() === 0
+  }
   generateHtml () {
-    return '<i class="fa fa-certificate"></i>&nbsp;&nbsp;' + (this.pendingTx ? 'Broadcast Tx' : 'Generate Tx')
+    return '<i class="' + (Current.pendingTx ? 'fas fa-satellite-dish' : 'fa fa-certificate') + '"></i>&nbsp;&nbsp;' + (Current.pendingTx ? 'Broadcast Tx' : 'Generate Tx')
   }
 
   goToStep (el, param) {
@@ -219,68 +230,25 @@ socket.onmessage = function(e) {
     }
   }
 
+  pendingTxStr() {
+    return Current.pendingTx ? Current.pendingTx.toString() : null
+  }
+
+  decodeTxURL() {
+    return Current.pendingTx ? 'https://live.blockcypher.com/btc/decodetx/?t=' + this.pendingTxStr() : null
+  }
+
   fatURI () {
-    if (!this.pendingTx) { return }
-    return 'bitcoin://' + this.pendingTx.toString()
+    if (!Current.pendingTx) { return }
+    return 'bitcoin:?tx=' + this.pendingTxStr()
   }
 
-  makeBmapTx () {    
-    if (!Current.walletInitialized) {
-      Silica.pub('init-satchel')
-      return
-    }
-
-    if (this.pendingTx) {
-      let broadcast = confirm('Broadcast this transaction?')
-      if (broadcast) {
-        console.log('broadcasting...')
-        this.broadcastTx()
-      }
-      this.goToStep(null, 5)
-      return
-    }
-
-    // set the data 
-    let data = this.getData()
-    
-    let tx = new satchel.bsv.Transaction()
-    tx.from(satchel.getUtxos())
-    tx = satchel.addOpReturnData(tx, data)
-    tx.feePerKb(satchel.feePerKb)
-    tx.change(satchel.getAddress())
-    tx = satchel.cleanTxDust(tx)
-    tx = tx.sign(satchel.getPrivateKey())
-
-    this.pendingTx = tx
-    console.log('tx!', tx)
-  }
-
-  broadcastTx () {
-    if (!this.pendingTx) {
-      console.warn('No pending tx to broadcast.')
-      return 
-    }
-
-    // Uncomment this when you're ready to broadcast
-    satchel.broadcastTx(this.pendingTx, (resTx) => {
-      Silica.apply(() => {
-        this.responseTx = resTx.hash
-      })
-      setTimeout(() => {
-        satchel.updateUtxos()
-      }, 2000)
-    }, (err) => {
-      console.log('on error', err)
-    }, {
-      testing: false
-    })
-  }
   loggedIn () {
     return satchel.isLoggedIn()
   }
 
   showHeading () {
-    return !this.step1
+    return !this.step1 && !this.step5
   }
 
   activeClass (param) {
@@ -298,6 +266,10 @@ socket.onmessage = function(e) {
       default:
         return ''
     } 
+  }
+
+  makeBmapTx () {
+    Silica.pub('make-bmap-tx')
   }
 
   openDemo () {
@@ -389,7 +361,7 @@ socket.onmessage = function(e) {
         data.push({"type": "str", "v": key.value})
       }
     }
-
+    Current.data = data
     return data
   }
 }

@@ -19,8 +19,10 @@
     font-size: 2rem
   h1, h2
     color: #00fbff
-  h3, h4, h5, h6
+  h3, h4, h6
     color: #7387f5
+  h5
+    color: $pink
 
   .io
     ul
@@ -36,9 +38,9 @@
     li
       line-height: 1.5rem
   
-  .heading
-    background-color: #222
-    padding: .5rem
+  nav
+    background-color: #111
+    border-bottom: 1px solid $pink
     ul
       padding: 0
       margin: 0
@@ -46,10 +48,10 @@
         transition: all .5s
         span
           font-weight: bold
-          border-radius: $radius
           display: inline-block
           padding: 1rem
           color: #666
+          width: 100%
         &.active
           span
             font-size: 1rem

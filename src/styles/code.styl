@@ -4,7 +4,7 @@ pre[class*="language-"]
   border-radius: $radius
   &.copyme
     position: relative
-    overflow: unset !important
+    overflow: inherit
     .copy
       content: "copy"
       padding: 2px 10px 0
@@ -25,3 +25,10 @@ pre[class*="language-"]
 
 code
   overflow: scroll
+
+pre
+  &.no-overflow
+    code
+      display: block
+      overflow: hidden
+      text-overflow: ellipsis

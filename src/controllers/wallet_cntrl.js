@@ -15,15 +15,45 @@ class WalletCntrl extends Silica.Controllers.Base {
       this.initSatchel()
     }
 
-    Silica.sub('init-satchel', () => {
+    this.initSub = Silica.sub('init-satchel', () => {
       this.initSatchel()
+    })
+
+    this.makeBmapTxSub = Silica.sub('make-bmap-tx', () => {
+      this.makeBmapTx()
     })
   }
 
-  walletLoaded () {
+  qrCodeSvg () {
+    if (!satchel.isLoggedIn()) { return null }
+    return satchel.generateQrCode(satchel.getAddressStr()).createSvgTag(8,2)
+  }
+
+  broadcastTx () {
+    if (!Current.pendingTx) {
+      console.warn('No pending tx to broadcast.')
+      return 
+    }
+
+    // Uncomment this when you're ready to broadcast
+    satchel.broadcastTx(Current.pendingTx, (resTx) => {
+      Silica.pub('tx-broadcasted', resTx)
+      setTimeout(() => {
+        satchel.updateUtxos()
+      }, 2000)
+    }, (err) => {
+      console.log('on error', err)
+    }, {
+      testing: false
+    })
+  }
+
+  walletLoaded (login=null) {
     // Login check & prompt, otherwise continue
     if (!satchel.isLoggedIn()) {
-      let login = prompt('Enter a 12 word mnemonic, or WIF')
+      if (!login || !login.length) {
+        login = prompt('Enter a 12 word mnemonic, or WIF')
+      }
       let wif = null
       if (login.split(" ").length === 12) {
         wif = satchel.importMnemonic(login)
@@ -42,13 +72,12 @@ class WalletCntrl extends Silica.Controllers.Base {
   }
 
   onLogin () {
-    satchel.updateBalance(() => {
-      Silica.apply(() => {
-        // Update the UI with wallet info
-        this.address = satchel.getAddressStr()
-        this.balance = satchel.getBalance()
-        Current.walletInitialized = true
-      })
+    Silica.apply(() => {
+      // Update the UI with wallet info
+      this.address = satchel.getAddressStr()
+      this.balance = satchel.getBalance()
+      console.log('got balance', this.balance, this.address)
+      Current.walletInitialized = true
     })
   }
 
@@ -79,6 +108,56 @@ class WalletCntrl extends Silica.Controllers.Base {
     console.log('prompt')
   }
 
+  signup () {
+    console.log('using bip39 to generate seed...')
+    if (!Current.mnemonic) {
+      let newAddress = satchel.generateAddress()
+      let wif = satchel.importMnemonic(newAddress.mnemonic().phrase)
+      console.log('signing in', wif)
+      satchel.login(wif, () => {
+        console.log('we\'re in the callback')
+        this.onLogin()
+      })
+    }
+  }
+
+  makeBmapTx () {    
+    if (!Current.walletInitialized) {
+      Silica.pub('init-satchel')
+      return
+    }
+
+    if (Current.pendingTx) {
+      let broadcast = confirm('Broadcast this transaction?')
+      if (broadcast) {
+        console.log('broadcasting...')
+        this.broadcastTx()
+      }
+      return
+    }
+
+    // set the data 
+    let data = Current.data
+    
+    let tx = new satchel.bsv.Transaction()
+    tx.from(satchel.getUtxos())
+    tx = satchel.addOpReturnData(tx, data)
+    tx.feePerKb(satchel.feePerKb)
+    tx.change(satchel.getAddress())
+    tx = satchel.cleanTxDust(tx)
+    tx = tx.sign(satchel.getPrivateKey())
+
+    Current.pendingTx = tx
+    Silica.defer(() => {
+      Mapsv.loadPrism()
+    })
+    console.log('tx!', tx)
+  }
+
+  onDestroy () {
+    Silica.unsub(this.makeBmapTxSub)
+    Silica.ubsub(this.initSub)
+  }
 }
 
 exports = WalletCntrl
