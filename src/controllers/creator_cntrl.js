@@ -24,7 +24,7 @@ class CreatorCntrl extends Silica.Controllers.Base {
     // Make a random api key
     let privateKey = satchel.bsv.PrivateKey.fromRandom()
     let publicKey = satchel.bsv.PublicKey.fromPrivateKey(privateKey)
-    this.apiKey = this.address() || satchel.bsv.Address.fromPublicKey(publicKey)
+    this.apiKey = Current.address || satchel.bsv.Address.fromPublicKey(publicKey)
 
     window.addEventListener('popstate', () => {
       console.log('pop!')
@@ -196,7 +196,7 @@ socket.onmessage = function(e) {
   }
 
   generateDisabled () {
-    return !Current.walletInitialized || !satchel || !satchel.isLoggedIn() || (this.balance === 0)
+    return !Current.walletInitialized || !satchel || !satchel.isLoggedIn() || (Current.balance === 0)
   }
   generateHtml () {
     return '<i class="' + (Current.pendingTx ? 'fas fa-satellite-dish' : 'fa fa-certificate') + '"></i>&nbsp;&nbsp;' + (Current.pendingTx ? 'Broadcast Tx' : 'Generate Tx')

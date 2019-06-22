@@ -9,12 +9,13 @@ class Current {
 
     this.walletInitialized = satchel && satchel.isLoggedIn()
     this.pendingTx = null
+    this.balance = 0
+    this.address = this.walletInitialized ? satchel.getAddressStr() : ''
+
     }
 
     return instance
   }
-
-
 }
 
 exports = Current

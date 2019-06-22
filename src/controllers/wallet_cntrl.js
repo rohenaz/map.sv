@@ -10,9 +10,6 @@ class WalletCntrl extends Silica.Controllers.Base {
   constructor(element) {
     super(element)
 
-    this.address = ''
-    this.balance = 0
-
     if (satchel.isLoggedIn()) {
       this.initSatchel()
     }
@@ -27,7 +24,7 @@ class WalletCntrl extends Silica.Controllers.Base {
   }
 
   showFundWallet () {
-    return Current.walletInitialized && this.balance < DUST_LIMIT
+    return Current.walletInitialized && Current.balance < DUST_LIMIT
   }
   
   qrCodeSvg () {
@@ -48,8 +45,8 @@ class WalletCntrl extends Silica.Controllers.Base {
         satchel.updateUtxos(satchel.updateBalance(() => {
           Silica.apply(() => {
             console.log('updated utxos and balance')
-            this.balance = satchel.getBalance() + satchel.getUnconfirmedBalance()
-          })
+            Current.balance = satchel.getBalance() + satchel.getUnconfirmedBalance()
+          }, this.el)
         }))
       }, 2000)
     }, (err) => {
@@ -85,11 +82,11 @@ class WalletCntrl extends Silica.Controllers.Base {
   onLogin () {
     Silica.apply(() => {
       // Update the UI with wallet info
-      this.address = satchel.getAddressStr()
-      this.balance = satchel.getBalance() + satchel.getUnconfirmedBalance()
-      console.log('got balance', this.balance, this.address)
+      Current.address = satchel.getAddressStr()
+      Current.balance = satchel.getBalance() + satchel.getUnconfirmedBalance()
+      console.log('got balance', Current.balance, Current.address)
       Current.walletInitialized = true
-    })
+    }, this.el)
   }
 
   loggedIn () {
@@ -105,7 +102,7 @@ class WalletCntrl extends Silica.Controllers.Base {
     let apiKey = satchel.bsv.Address.fromPublicKey(publicKey)
     satchel.init({
       'planariaApiKey': apiKey,
-      'feePerKb': 1000,
+      'feePerKb': 500,
       'bitsocketCallback': (data) => { this.socketCallback(data) }
     }, (data) => { this.walletLoaded(data) })
   }
@@ -113,7 +110,11 @@ class WalletCntrl extends Silica.Controllers.Base {
   socketCallback (data) {
     // Here you can react to wallet messages in your UI
     console.log('wallet socket callback', data)
-    satchel.updateBalance(satchel.updateUtxos())
+    satchel.updateBalance(satchel.updateUtxos(() => {
+      Silica.apply(() => {
+        Current.balance = satchel.getBalance() + satchel.getUnconfirmedBalance()
+      }, this.el)
+    }))
   }
 
   loginPrompt() {
