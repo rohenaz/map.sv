@@ -45,7 +45,12 @@ class WalletCntrl extends Silica.Controllers.Base {
     satchel.broadcastTx(Current.pendingTx, (resTx) => {
       Silica.pub('tx-broadcasted', resTx)
       setTimeout(() => {
-        satchel.updateUtxos()
+        satchel.updateUtxos(satchel.updateBalance(() => {
+          Silica.apply(() => {
+            console.log('updated utxos and balance')
+            this.balance = satchel.getBalance() + satchel.getUnconfirmedBalance()
+          })
+        }))
       }, 2000)
     }, (err) => {
       console.log('on error', err)
