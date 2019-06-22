@@ -3,6 +3,8 @@ goog.module("controllers.wallet")
 const CurrentClass = goog.require('concerns.current')
 const Current = new CurrentClass()
 
+const DUST_LIMIT = 546
+
 class WalletCntrl extends Silica.Controllers.Base {
   // Constructor receives the element which specified this controller
   constructor(element) {
@@ -24,6 +26,10 @@ class WalletCntrl extends Silica.Controllers.Base {
     })
   }
 
+  showFundWallet () {
+    return Current.walletInitialized && this.balance < DUST_LIMIT
+  }
+  
   qrCodeSvg () {
     if (!satchel.isLoggedIn()) { return null }
     return satchel.generateQrCode(satchel.getAddressStr()).createSvgTag(8,2)
@@ -75,7 +81,7 @@ class WalletCntrl extends Silica.Controllers.Base {
     Silica.apply(() => {
       // Update the UI with wallet info
       this.address = satchel.getAddressStr()
-      this.balance = satchel.getBalance()
+      this.balance = satchel.getBalance() + satchel.getUnconfirmedBalance()
       console.log('got balance', this.balance, this.address)
       Current.walletInitialized = true
     })
@@ -102,6 +108,7 @@ class WalletCntrl extends Silica.Controllers.Base {
   socketCallback (data) {
     // Here you can react to wallet messages in your UI
     console.log('wallet socket callback', data)
+    satchel.updateBalance(satchel.updateUtxos())
   }
 
   loginPrompt() {
@@ -123,7 +130,7 @@ class WalletCntrl extends Silica.Controllers.Base {
 
   makeBmapTx () {    
     if (!Current.walletInitialized) {
-      Silica.pub('init-satchel')
+      this.initSatchel()
       return
     }
 

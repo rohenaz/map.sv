@@ -196,7 +196,7 @@ socket.onmessage = function(e) {
   }
 
   generateDisabled () {
-    return !Current.walletInitialized || !satchel || !satchel.isLoggedIn() || satchel.getBalance() === 0
+    return !Current.walletInitialized || !satchel || !satchel.isLoggedIn() || (this.balance === 0)
   }
   generateHtml () {
     return '<i class="' + (Current.pendingTx ? 'fas fa-satellite-dish' : 'fa fa-certificate') + '"></i>&nbsp;&nbsp;' + (Current.pendingTx ? 'Broadcast Tx' : 'Generate Tx')
