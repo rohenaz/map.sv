@@ -7,5 +7,4 @@ build_cache
 firebase-debug.log
 firebase.json
 .idea
-.DS_Store
 todo.md
