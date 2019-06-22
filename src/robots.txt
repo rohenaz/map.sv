@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://map.sv/sitemap.xml
