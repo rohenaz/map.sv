@@ -7,3 +7,4 @@ cp ./src/browserconfig.xml ./build/browserconfig.xml
 cp ./src/ror.xml ./build/ror.xml
 cp ./src/site.webmanifest ./build/site.webmanifest
 cp ./src/sitemap.xml ./build/sitemap.xml
+cp ./src/robots.txt ./build/robots.txt
