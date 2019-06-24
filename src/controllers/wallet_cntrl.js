@@ -102,7 +102,7 @@ class WalletCntrl extends Silica.Controllers.Base {
     let apiKey = satchel.bsv.Address.fromPublicKey(publicKey)
     satchel.init({
       'planariaApiKey': apiKey,
-      'feePerKb': 500,
+      'feePerKb': 1000,
       'bitsocketCallback': (data) => { this.socketCallback(data) }
     }, (data) => { this.walletLoaded(data) })
   }
